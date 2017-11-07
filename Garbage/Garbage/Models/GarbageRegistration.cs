@@ -10,9 +10,10 @@ namespace Garbage.Models
     {
         public Guid GarbageRegistrationid { get; set; }
         public string Description { get; set; }
-        public Guid GarbagetypeId { get; set; }
+        public string Street { get; set; }
+        public Guid GarbagetypeId{ get; set; }
         public Guid CityId { get; set; }
-        public float Weight { get; set; }
+        public int Weight { get; set; }
         public float Lat { get; set; }
         public float Long { get; set; }
         public string Name { get; set; }
