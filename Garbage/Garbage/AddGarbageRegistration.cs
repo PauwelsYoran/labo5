@@ -16,7 +16,7 @@ namespace Garbage
         private static string ConnectionString = Environment.GetEnvironmentVariable("ConnectionString");
 
         [FunctionName("AddgarbageResgistration")]
-        public async static System.Threading.Tasks.Task<HttpResponseMessage> addGarbageRegistration([HttpTrigger(AuthorizationLevel.Function, "put", Route = "HttpTriggerCSharp/AddGarbageRegistartion")]HttpRequestMessage req, TraceWriter log)
+        public async static System.Threading.Tasks.Task<HttpResponseMessage> addGarbageRegistration([HttpTrigger(AuthorizationLevel.Function, "put","post", Route = "HttpTriggerCSharp/AddGarbageRegistartion")]HttpRequestMessage req, TraceWriter log)
         {
             try
             {
