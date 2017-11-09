@@ -20,7 +20,7 @@ namespace Garbage
         private static string ConnectionString = Environment.GetEnvironmentVariable("ConnectionString");
 
         [FunctionName("GetRegistrations")]
-        public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "garbage/getRegistrations")]HttpRequestMessage req, TraceWriter log)
+        public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "garbage/getRegistrations/{user}")]HttpRequestMessage req, string user, TraceWriter log)
         {
             //try
             //{
@@ -31,8 +31,9 @@ namespace Garbage
                     using (SqlCommand command = new SqlCommand())
                     {
                         command.Connection = connection;
-                        string sql = "SELECT * From GarbageRegistration";
+                        string sql = "SELECT * From GarbageRegistration WHERE Name = @user";
                         command.CommandText = sql;
+                        command.Parameters.AddWithValue("@user", user);
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
